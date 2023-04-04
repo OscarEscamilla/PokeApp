@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/pokemonsFragment">
+
+    <fragment
+        android:id="@+id/pokemonsFragment"
+        android:name="com.racso.pokeapp.ui.pokemons.PokemonsFragment"
+        android:label="@string/title_pokemons"
+        tools:layout="@layout/fragment_pokemons">
+        <action
+            android:id="@+id/action_pokemonsFragment_to_pokemonDetailFragment"
+            app:destination="@id/pokemonDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/locationsFragment"
+        android:name="com.racso.pokeapp.ui.locations.LocationsFragment"
+        android:label="@string/title_locations"
+        tools:layout="@layout/fragment_locations" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.racso.pokeapp.ui.profile.ProfileFragment"
+        android:label="@string/title_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/pokemonDetailFragment"
+        android:name="com.racso.pokeapp.ui.pokemons.PokemonDetailFragment"
+        android:label="fragment_pokemon_detail"
+        tools:layout="@layout/fragment_pokemon_detail" />
+</navigation>

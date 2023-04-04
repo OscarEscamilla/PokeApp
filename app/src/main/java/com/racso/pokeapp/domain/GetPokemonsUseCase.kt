@@ -1,0 +1,4 @@
+package com.racso.pokeapp.domain
+
+class GetPokemonsUseCase {
+}
