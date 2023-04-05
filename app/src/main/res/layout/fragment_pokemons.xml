@@ -18,6 +18,11 @@
 
     </RelativeLayout>
 
+    <include
+        android:id="@+id/mg_error"
+        android:visibility="gone"
+        layout="@layout/error_message"></include>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_movies"
         android:layout_width="match_parent"

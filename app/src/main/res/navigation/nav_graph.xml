@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
+    maintainBackstack="true"
     app:startDestination="@id/pokemonsFragment">
 
     <fragment
@@ -27,6 +28,13 @@
     <fragment
         android:id="@+id/pokemonDetailFragment"
         android:name="com.racso.pokeapp.ui.pokemons.PokemonDetailFragment"
-        android:label="fragment_pokemon_detail"
-        tools:layout="@layout/fragment_pokemon_detail" />
+        android:label="Pokemon"
+        tools:layout="@layout/fragment_pokemon_detail">
+        <argument
+            android:name="pokemon_name"
+            app:argType="string" />
+        <argument
+            android:name="ShowBottomNavigation"
+            android:defaultValue="false" />
+    </fragment>
 </navigation>

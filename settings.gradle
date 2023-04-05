@@ -14,4 +14,3 @@ dependencyResolutionManagement {
 }
 rootProject.name = "PokeApp"
 include ':app'
-include ':mylocations'

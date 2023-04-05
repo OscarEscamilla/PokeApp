@@ -19,6 +19,7 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav"
         app:menu="@menu/menu_bottom_nav"
+        style="@style/Widget.MaterialComponents.BottomNavigationView.PrimarySurface"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
