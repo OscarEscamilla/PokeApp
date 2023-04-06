@@ -5,9 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.racso.pokeapp.core.Resource
-import com.racso.pokeapp.data.model.PokemonEntry
-import com.racso.pokeapp.data.network.responses.Pokemon
-import com.racso.pokeapp.domain.GetPokemonUseCase
+import com.racso.pokeapp.data.model.Pokemon
+import com.racso.pokeapp.domain.GetPokemonByNameUseCase
 import com.racso.pokeapp.domain.GetPokemonsListUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -17,11 +16,11 @@ import javax.inject.Inject
 @HiltViewModel
 class PokemonsViewModel @Inject constructor(
     private val getPokemonsListUseCase: GetPokemonsListUseCase,
-    private val getPokemonUseCase: GetPokemonUseCase
+    private val getPokemonUseCase: GetPokemonByNameUseCase
 ) : ViewModel() {
 
-    val pokemonsList: MutableLiveData<Resource<ArrayList<PokemonEntry>>> by lazy {
-        MutableLiveData<Resource<ArrayList<PokemonEntry>>>()
+    val pokemonsList: MutableLiveData<Resource<List<Pokemon>>> by lazy {
+        MutableLiveData<Resource<List<Pokemon>>>()
     }
 
     private val _pokemon: MutableLiveData<Resource<Pokemon>> by lazy { MutableLiveData<Resource<Pokemon>>() }

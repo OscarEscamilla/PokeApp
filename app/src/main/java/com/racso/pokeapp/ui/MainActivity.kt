@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun setupAppBar(){
-        val appBarConfiguration = AppBarConfiguration(setOf(R.id.pokemonsFragment, R.id.locationsFragment, R.id.profileFragment))
+        val appBarConfiguration = AppBarConfiguration(setOf(R.id.pokemonsFragment, R.id.favoritesFragment))
         setupActionBarWithNavController( navController, appBarConfiguration)
     }
 

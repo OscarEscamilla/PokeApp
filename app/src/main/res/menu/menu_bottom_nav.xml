@@ -6,12 +6,8 @@
         android:icon="@drawable/baseline_catching_pokemon_24"
         android:title="@string/title_pokemons" />
     <item
-        android:id="@+id/locationsFragment"
-        android:icon="@drawable/baseline_location_on_24"
-        android:title="@string/title_locations" />
-    <item
-        android:id="@+id/profileFragment"
-        android:icon="@drawable/baseline_person_24"
-        android:title="@string/title_profile" />
+        android:id="@+id/favoritesFragment"
+        android:icon="@drawable/baseline_favorite_24"
+        android:title="@string/favorites" />
 
 </menu>

@@ -3,4 +3,6 @@
     <string name="title_pokemons">Pokemons</string>
     <string name="title_locations">Locations</string>
     <string name="title_profile">Profile</string>
+    <string name="favorites">Favorites</string>
+    <string name="network_error">An error has occurred, please check yor network connection and try again :(</string>
 </resources>

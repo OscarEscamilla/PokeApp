@@ -16,16 +16,6 @@
             app:destination="@id/pokemonDetailFragment" />
     </fragment>
     <fragment
-        android:id="@+id/locationsFragment"
-        android:name="com.racso.pokeapp.ui.locations.LocationsFragment"
-        android:label="@string/title_locations"
-        tools:layout="@layout/fragment_locations" />
-    <fragment
-        android:id="@+id/profileFragment"
-        android:name="com.racso.pokeapp.ui.profile.ProfileFragment"
-        android:label="@string/title_profile"
-        tools:layout="@layout/fragment_profile" />
-    <fragment
         android:id="@+id/pokemonDetailFragment"
         android:name="com.racso.pokeapp.ui.pokemons.PokemonDetailFragment"
         android:label="Pokemon"
@@ -36,5 +26,14 @@
         <argument
             android:name="ShowBottomNavigation"
             android:defaultValue="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.racso.pokeapp.ui.favorites.FavoritesFragment"
+        android:label="Favorites"
+        tools:layout="@layout/fragment_favorites" >
+        <action
+            android:id="@+id/action_favoritesFragment_to_pokemonDetailFragment"
+            app:destination="@id/pokemonDetailFragment" />
     </fragment>
 </navigation>
