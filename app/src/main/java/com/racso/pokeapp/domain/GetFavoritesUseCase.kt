@@ -1,7 +1,6 @@
 package com.racso.pokeapp.domain
 
-import com.racso.pokeapp.data.database.entity.PokemonEntity
-import com.racso.pokeapp.data.database.entity.toPokemonList
+import com.racso.pokeapp.data.local.entity.toPokemonList
 import com.racso.pokeapp.data.model.Pokemon
 import com.racso.pokeapp.data.repository.PokemonRepository
 import javax.inject.Inject

@@ -8,6 +8,7 @@ import com.racso.pokeapp.core.Resource
 import com.racso.pokeapp.data.model.Pokemon
 import com.racso.pokeapp.domain.GetPokemonByNameUseCase
 import com.racso.pokeapp.domain.GetPokemonsListUseCase
+import com.racso.pokeapp.domain.SaveFavoritePokemon
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -16,7 +17,8 @@ import javax.inject.Inject
 @HiltViewModel
 class PokemonsViewModel @Inject constructor(
     private val getPokemonsListUseCase: GetPokemonsListUseCase,
-    private val getPokemonUseCase: GetPokemonByNameUseCase
+    private val getPokemonUseCase: GetPokemonByNameUseCase,
+    private val saveFavoritePokemon: SaveFavoritePokemon
 ) : ViewModel() {
 
     val pokemonsList: MutableLiveData<Resource<List<Pokemon>>> by lazy {
@@ -47,6 +49,13 @@ class PokemonsViewModel @Inject constructor(
                 e.printStackTrace()
                 _pokemon.postValue(Resource.Failure(e))
             }
+        }
+    }
+
+
+    fun saveFavorite(pokemon: Pokemon){
+        viewModelScope.launch() {
+            saveFavoritePokemon(pokemon)
         }
     }
 

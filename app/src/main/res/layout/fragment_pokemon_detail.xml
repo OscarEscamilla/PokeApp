@@ -56,6 +56,27 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/guideline2" />
 
+        <ImageView
+            android:id="@+id/btn_like"
+            tools:src="@drawable/baseline_favorite_border_24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_size_pokemon_info"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/guideline2" />
+
+
+        <TextView
+            android:id="@+id/txt_height_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Height"
+            android:textSize="@dimen/text_size_detail"
+            app:layout_constraintEnd_toStartOf="@id/txt_heith_title"
+            app:layout_constraintHorizontal_bias="0.588"
+            app:layout_constraintStart_toEndOf="@id/textView"
+            app:layout_constraintTop_toBottomOf="@id/txt_height" />
+
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
@@ -70,20 +91,21 @@
             android:id="@+id/txt_height"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/margin_size_pokemon_info"
             android:text="1.7 M"
             android:textSize="@dimen/text_size_detail"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/guideline2" />
+            app:layout_constraintTop_toBottomOf="@id/guideline2"
+            app:layout_constraintEnd_toStartOf="@id/btn_like"
+            app:layout_constraintStart_toEndOf="@id/txt_weight"/>
         <TextView
-            android:text="Height"
+            android:id="@+id/txt_heith_title"
+            android:text="Favorite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/text_size_detail"
-            android:layout_marginEnd="@dimen/margin_size_pokemon_info"
+            android:layout_marginEnd="50dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txt_height">
+            app:layout_constraintTop_toBottomOf="@id/btn_like">
         </TextView>
 
         <TextView

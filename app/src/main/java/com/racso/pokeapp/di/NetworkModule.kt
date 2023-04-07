@@ -1,7 +1,7 @@
 package com.racso.pokeapp.di
 
 import com.racso.pokeapp.core.Constants
-import com.racso.pokeapp.data.network.PokeApiService
+import com.racso.pokeapp.data.remote.PokeApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

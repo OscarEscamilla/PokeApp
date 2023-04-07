@@ -2,12 +2,10 @@ package com.racso.pokeapp.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -23,6 +21,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var navController: NavController
     lateinit var binding: ActivityMainBinding
     lateinit var bottomNavigationView: BottomNavigationView
+    lateinit var toolbar: Toolbar
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -30,10 +29,11 @@ class MainActivity : AppCompatActivity() {
 
         val navHostFragment = supportFragmentManager.findFragmentById(binding.navHostFragment.id) as NavHostFragment
         navController = navHostFragment.navController
-
+        setupToolbar()
         setupBottomNavigation()
-        setupAppBar()
+        setupAppBarConfig()
         setupListeners()
+
     }
 
     fun setupBottomNavigation(){
@@ -41,7 +41,13 @@ class MainActivity : AppCompatActivity() {
         bottomNavigationView.setupWithNavController(navController)
     }
 
-    fun setupAppBar(){
+    fun setupToolbar(){
+        toolbar = binding.myToolbar
+        setSupportActionBar(toolbar)
+        toolbar.setupWithNavController(navController)
+    }
+
+    fun setupAppBarConfig(){
         val appBarConfiguration = AppBarConfiguration(setOf(R.id.pokemonsFragment, R.id.favoritesFragment))
         setupActionBarWithNavController( navController, appBarConfiguration)
     }
@@ -51,7 +57,6 @@ class MainActivity : AppCompatActivity() {
             if (arguments?.getBoolean("ShowBottomNavigation", true) == false) bottomNavigationView.hide() else bottomNavigationView.show()
         }
     }
-
 
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp() || super.onSupportNavigateUp()

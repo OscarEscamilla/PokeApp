@@ -1,12 +1,11 @@
 package com.racso.pokeapp.data.repository
 
-import android.util.Log
-import com.racso.pokeapp.data.database.dao.PokemonDao
-import com.racso.pokeapp.data.database.entity.PokemonEntity
-import com.racso.pokeapp.data.database.entity.toPokemonList
-import com.racso.pokeapp.data.network.PokeApiService
+import com.racso.pokeapp.data.local.dao.PokemonDao
+import com.racso.pokeapp.data.local.entity.PokemonEntity
+import com.racso.pokeapp.data.local.entity.toPokemonList
+import com.racso.pokeapp.data.remote.PokeApiService
 import com.racso.pokeapp.data.model.Pokemon
-import com.racso.pokeapp.data.network.responses.*
+import com.racso.pokeapp.data.remote.responses.*
 import javax.inject.Inject
 
 class PokemonRepository @Inject constructor(private val api: PokeApiService, private  val pokemonDao: PokemonDao) {
@@ -27,11 +26,15 @@ class PokemonRepository @Inject constructor(private val api: PokeApiService, pri
     }
 
     suspend fun savePokemons(pokemonList: List<PokemonEntity>){
-        pokemonDao.insertAllMovies(pokemonList)
+        pokemonDao.insertAllPokemons(pokemonList)
     }
 
     suspend fun getFavorites(): List<PokemonEntity> {
         return pokemonDao.getFavoritesPokemon()
+    }
+
+    suspend fun saveFavorite(pokemonEntity: PokemonEntity){
+        pokemonDao.updateToFavoritePokemon(pokemonEntity)
     }
 
 

@@ -21,7 +21,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class FavoritesFragment : Fragment(), PokemonsAdapter.OnPokemonClickListener{
+class FavoritesFragment : Fragment(), FavoritesAdapter.OnPokemonClickListener{
 
     lateinit var binding: FragmentFavoritesBinding
     private val viewModel by viewModels<FavoritesViewModel>()
@@ -45,7 +45,7 @@ class FavoritesFragment : Fragment(), PokemonsAdapter.OnPokemonClickListener{
     }
 
     fun setupObservers(){
-        viewModel.fetchFavorites.observe(viewLifecycleOwner){ result ->
+        viewModel.favoritesList.observe(viewLifecycleOwner){ result ->
             when(result){
                 is Resource.Loading -> {
                     binding.mgError.root.hide()
@@ -72,10 +72,9 @@ class FavoritesFragment : Fragment(), PokemonsAdapter.OnPokemonClickListener{
         binding.mgError.root.hide()
         binding.progressBar.hide()
         val gridLayoutManager = GridLayoutManager(context,3)
-        val adapter = PokemonsAdapter(this)
+        val adapter = FavoritesAdapter(this@FavoritesFragment,pokemonList)
         binding.rvPokemon.layoutManager = gridLayoutManager
         binding.rvPokemon.adapter = adapter
-        adapter.addItems(pokemonList)
     }
 
     fun showEmptyFavoritesView(){
@@ -84,6 +83,13 @@ class FavoritesFragment : Fragment(), PokemonsAdapter.OnPokemonClickListener{
         binding.mgError.txtMessage.setTextColor(ContextCompat.getColor(requireContext(), R.color.teal_700))
         binding.mgError.btnRetry.hide()
         binding.mgError.root.show()
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        viewModel.getPokemonsList()
+
     }
 
     override fun onClick(pokemon: Pokemon) {

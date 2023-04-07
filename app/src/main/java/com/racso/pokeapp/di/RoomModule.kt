@@ -3,7 +3,7 @@ package com.racso.pokeapp.di
 import android.content.Context
 import androidx.room.Room
 import com.racso.pokeapp.core.Constants
-import com.racso.pokeapp.data.database.PokemonDatabase
+import com.racso.pokeapp.data.local.PokemonDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,6 +22,7 @@ object RoomModule {
 
     @Singleton
     @Provides
-    fun provideMovieDao(db: PokemonDatabase) = db.getPokemonDao()
+    fun providePokemonDao(db: PokemonDatabase) = db.getPokemonDao()
+
 
 }

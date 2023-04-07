@@ -1,5 +1,6 @@
 package com.racso.pokeapp.ui.pokemons
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,12 +10,11 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.racso.mylocations.ui.LocationsActivity
 import com.racso.pokeapp.core.*
 import com.racso.pokeapp.data.model.Pokemon
 import com.racso.pokeapp.databinding.FragmentPokemonsBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.coroutineScope
 
 @AndroidEntryPoint
 class PokemonsFragment : Fragment(), PokemonsAdapter.OnPokemonClickListener{
@@ -88,10 +88,14 @@ class PokemonsFragment : Fragment(), PokemonsAdapter.OnPokemonClickListener{
             viewModel.getPokemonsList(offset = 0)
         }
 
+        binding.floatingActionButton.setOnClickListener {
+            startActivity(Intent(requireContext(), LocationsActivity::class.java))
+        }
+
         scrollListener = object : RecyclerView.OnScrollListener(){
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
-                val totalItemCount = recyclerView!!.layoutManager?.itemCount
+                val totalItemCount = recyclerView.layoutManager?.itemCount
                 if (totalItemCount == lastVisibleItemPosition + 1) {
                     offset+=20
                     viewModel.getPokemonsList(offset)

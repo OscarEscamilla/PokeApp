@@ -1,28 +1,41 @@
 package com.racso.pokeapp.ui.favorites
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.liveData
+import androidx.lifecycle.*
 import com.racso.pokeapp.core.Resource
 import com.racso.pokeapp.data.model.Pokemon
 import com.racso.pokeapp.domain.GetFavoritesUseCase
+import com.racso.pokeapp.domain.SaveFavoritePokemon
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
 @HiltViewModel
 class FavoritesViewModel @Inject constructor(
-    private val getFavoritesUseCase: GetFavoritesUseCase) :
+    private val getFavoritesUseCase: GetFavoritesUseCase):
     ViewModel() {
 
 
-    val fetchFavorites = liveData(Dispatchers.IO) {
-        emit(Resource.Loading())
-        try {
-            emit(Resource.Succes(getFavoritesUseCase()))
-        } catch (e: Exception) {
-            emit(Resource.Failure(e))
+    init {
+        getPokemonsList()
+    }
+
+    val favoritesList: MutableLiveData<Resource<List<Pokemon>>> by lazy {
+        MutableLiveData<Resource<List<Pokemon>>>()
+    }
+
+    fun getPokemonsList(){
+        viewModelScope.launch(Dispatchers.IO){
+            try {
+                favoritesList.postValue(Resource.Loading())
+                favoritesList.postValue(Resource.Succes(getFavoritesUseCase()))
+            }catch (e: Exception){
+                e.printStackTrace()
+                favoritesList.postValue(Resource.Failure(e))
+            }
         }
     }
+
 
 }
