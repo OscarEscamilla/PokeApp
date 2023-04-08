@@ -23,7 +23,7 @@
 <img src="https://github.com/OscarEscamilla/PokeApp/blob/main/screenshots/markers.png" alt="Image" width="250"/>
 
 - Locatios List
-<img src="https://github.com/OscarEscamilla/PokeApp/blob/main/screenshots/pokemon_list.png" alt="Image" width="250"/>
+<img src="https://github.com/OscarEscamilla/PokeApp/blob/main/screenshots/locations_list.png" alt="Image" width="250"/>
 
 - Location tracking notification
 <img src="https://github.com/OscarEscamilla/PokeApp/blob/main/screenshots/notification.png" alt="Image" width="250"/>
