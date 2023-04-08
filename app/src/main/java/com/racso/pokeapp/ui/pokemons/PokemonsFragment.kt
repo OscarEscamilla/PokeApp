@@ -64,7 +64,7 @@ class PokemonsFragment : Fragment(), PokemonsAdapter.OnPokemonClickListener{
            when(result){
                is Resource.Loading -> {
                    binding.mgError.root.hide()
-                    binding.progressBar.show()
+                    //binding.progressBar.show()
                }
                is Resource.Succes -> {
                    if (result.data.isNotEmpty()){
