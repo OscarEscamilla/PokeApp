@@ -19,7 +19,6 @@ import androidx.activity.viewModels
 import androidx.annotation.DrawableRes
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.app.ActivityCompat
-import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.mapbox.geojson.Point
@@ -40,12 +39,15 @@ import com.racso.mylocations.domain.LocationService
 import com.racso.mylocations.utils.AppConstants
 import com.racso.mylocations.utils.formatToStringMap
 import com.racso.mylocations.utils.toast
-import com.upax.moviesapp.data.model.Location
-import com.upax.moviesapp.data.model.toListString
+import com.racso.mylocations.data.model.Location
+import com.racso.mylocations.data.model.toListString
+import com.racso.mylocations.databinding.ActivityLocationsBinding
 import java.util.*
 
 
 class LocationsActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityLocationsBinding
 
     private var mapView: MapView? = null
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<*>
@@ -59,11 +61,13 @@ class LocationsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_my_locations)
-        mapView = findViewById(R.id.mapView)
+        binding = ActivityLocationsBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        mapView = binding.mapView
         mapView?.getMapboxMap()?.loadStyleUri(Style.MAPBOX_STREETS)
-        floatingButton = findViewById(R.id.floating_action_button)
-        bottomSheetBehavior = BottomSheetBehavior.from(findViewById(R.id.standard_bottom_sheet))
+        floatingButton = binding.floatingActionButton
+        bottomSheetBehavior = BottomSheetBehavior.from(binding.standardBottomSheet)
         setupListeners()
         setupObservers()
         setupNotificationCanel()
@@ -89,9 +93,8 @@ class LocationsActivity : AppCompatActivity() {
     }
 
     private fun setupLocationsLis(locations: List<String>) {
-        val recyclerView = findViewById<ListView>(R.id.rv_locations)
         val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, locations)
-        recyclerView.adapter = adapter
+        binding.rvLocations.adapter = adapter
     }
 
     private fun setupListeners() {

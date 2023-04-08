@@ -1,7 +1,7 @@
 package com.racso.mylocations.data
 
 import com.racso.mylocations.data.remote.LocationsDataSource
-import com.upax.moviesapp.data.model.Location
+import com.racso.mylocations.data.model.Location
 
 class LocationsRepository(private val locationsDataSource: LocationsDataSource) {
 

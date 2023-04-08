@@ -1,7 +1,7 @@
 package com.racso.mylocations.data.remote
 
 import com.google.firebase.firestore.FirebaseFirestore
-import com.upax.moviesapp.data.model.Location
+import com.racso.mylocations.data.model.Location
 import kotlinx.coroutines.tasks.await
 
 class LocationsDataSource {

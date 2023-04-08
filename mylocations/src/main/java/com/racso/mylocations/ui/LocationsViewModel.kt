@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.liveData
 import com.racso.mylocations.core.Resource
 import com.racso.mylocations.data.LocationsRepository
-import com.upax.moviesapp.data.model.Location
+import com.racso.mylocations.data.model.Location
 import kotlinx.coroutines.Dispatchers
 
 class LocationsViewModel(

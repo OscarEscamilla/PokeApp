@@ -1,4 +1,4 @@
-package com.upax.moviesapp.data.model
+package com.racso.mylocations.data.model
 
 import com.google.firebase.firestore.GeoPoint
 import com.google.firebase.firestore.ServerTimestamp
@@ -9,9 +9,9 @@ data class Location(
     @ServerTimestamp
     val created_at: Date? = null,
     val position: GeoPoint? = null
-){
+) {
     override fun toString(): String {
-        return "long:${this.position?.longitude} - lat:${this.position?.latitude} - ${this.created_at?.formatToStringMap()}"
+        return "Longitude: ${this.position?.longitude} - Latitude: ${this.position?.latitude}\nDate: ${this.created_at?.formatToStringMap()}"
     }
 }
 
